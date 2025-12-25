@@ -10,37 +10,48 @@ const fallbackImage = '/fallback-thumbnail.jpg';
 export const PostDetailsPage = () => {
 
 
-  const { id } = useParams<{ id: string }>();
+ const { id } = useParams<{ id: string }>();
+
+  const postId = Number(id); 
 
   const { t } = useTranslation();
 
-  const { data: posts = [] } = useGetNewsQuery();
+ const { data: posts = [], isLoading: postsLoading } = useGetNewsQuery();
+  const { data: authors = [], isLoading: authorsLoading } = useGetAuthorsQuery();
 
-  const { data: authors = [] } = useGetAuthorsQuery();
+  const isLoading = postsLoading || authorsLoading;
 
 
   const post = posts.find(p => p.id === Number(id));
   
   const author = authors.find(a => a.id === post?.userId);
 
-  if (!post) {
+
+  if (isLoading) {
     return (
-      <div className="max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:px-8 text-center">
-        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-8 border border-slate-200/50 dark:border-slate-700/50">
-          <div className="w-16 h-16 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg className="w-8 h-8 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
-            </svg>
-          </div>
-          <h1 className="text-2xl sm:text-3xl font-bold mb-4 text-slate-900 dark:text-white">{t('news.articleNotFound')}</h1>
-          <p className="text-slate-600 dark:text-slate-400 mb-6">{t('news.articleNotFoundDesc')}</p>
-          <Link to="/" className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors duration-300">
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-            </svg>
-            {t('news.backToNews')}
-          </Link>
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-lg text-gray-600 dark:text-gray-300">
+          {t('news.loading')}...
         </div>
+      </div>
+    );
+  }
+
+ if (!post) {
+    return (
+      <div className="max-w-4xl mx-auto px-4 py-16 text-center">
+        <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-4">
+          {t('news.articleNotFound') || 'Article Not Found'}
+        </h1>
+        <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
+          {t('news.articleNotFoundDesc') || 'The article you are looking for does not exist or was removed.'}
+        </p>
+        <Link
+          to="/"
+          className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+        >
+          ← {t('news.backToNews') || 'Back to News List'}
+        </Link>
       </div>
     );
   }
@@ -142,22 +153,35 @@ export const PostDetailsPage = () => {
 
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
 
+
               <div className="flex items-center gap-4">
-                <button className="flex items-center gap-2 px-4 py-2 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                  </svg>
 
-                  {t('news.like')}
-                </button>
-                <button className="flex items-center gap-2 px-4 py-2 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
-                  </svg>
+          <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-transparent 
+                   text-slate-700 dark:text-slate-300 
+                   hover:text-blue-600 dark:hover:text-blue-400 
+                   transition-colors duration-300 
+                   border border-slate-300 dark:border-slate-600 
+                   hover:border-blue-600 dark:hover:border-blue-400">
+  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+  </svg>
+  <span>{t('news.like')}</span>
+</button>
 
-                  {t('news.share')}
-                </button>
+<button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-transparent 
+                   text-slate-700 dark:text-slate-300 
+                   hover:text-blue-600 dark:hover:text-blue-400 
+                   transition-colors duration-300 
+                   border border-slate-300 dark:border-slate-600 
+                   hover:border-blue-600 dark:hover:border-blue-400">
+  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+          d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
+  </svg>
+  <span>{t('news.share')}</span>
+</button>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-sm text-slate-500 dark:text-slate-400">{t('news.tags')}</span>

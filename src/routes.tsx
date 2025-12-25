@@ -3,6 +3,8 @@ import App from './App';
 import { NewsListPage } from './pages/NewsListPage';
 import { PostDetailsPage } from './pages/PostDetailsPage';
 
+import { NotFoundPage } from './pages/NotFoundPage';
+
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -22,6 +24,12 @@ export const router = createBrowserRouter([
   path: 'post/:id',
   element: <PostDetailsPage />,
 },
+
+
+{
+        path: '*', 
+        element: <NotFoundPage />,
+      },
 
     ],
   },
