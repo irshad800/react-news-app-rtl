@@ -12,20 +12,27 @@ import arTranslation from './ar.json';
 i18n
   .use(LanguageDetector)
  .use(initReactI18next)
+
+ 
   .init({
     resources: {
       en: { translation: enTranslation },
       ar: { translation: arTranslation },
     },
+
+
     lng: localStorage.getItem('language') || 'en', 
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false, 
     },
+
+
     detection: {
       order: ['localStorage'],
       caches: ['localStorage'],
     },
+
   });
 
 
