@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import { useParams, Link } from 'react-router-dom';
 import { useGetNewsQuery } from '../features/news/newsApi';
 
@@ -27,6 +29,15 @@ export const PostDetailsPage = () => {
   const author = authors.find(a => a.id === post?.userId);
 
 
+useEffect(() => {
+    if (post) {
+      document.title = `${post.title} | News App`;
+    } else {
+      document.title = 'Article Not Found | News App';
+    }
+  }, [post?.title]);
+
+  
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
