@@ -1,22 +1,29 @@
 # News App with Theme & Language Preferences
 
-A modern React + TypeScript news app with:
+A modern news application built with React + TypeScript.
 
-- Light/Dark theme toggle (persisted)
-- English/Arabic language switch with RTL support
-- News fetched from JSONPlaceholder (posts + users as authors)
-- Responsive grid with random thumbnails
-- Skeleton loading, image fallback
-- Full post details page
+## Features
+
+- Light/Dark theme toggle (persisted in localStorage)
+- English/Arabic language switch with full RTL support
+- News fetched from JSONPlaceholder (posts as articles, users as authors)
+- Responsive card grid with hover effects
+- Random thumbnails with fallback image
+- Skeleton loading animation
+- Full post details page with author info and reading time
+- Smooth navigation and dynamic page titles
+- Professional Tailwind CSS design
 
 ## Tech Stack
+
 - React 18 + TypeScript
 - Redux Toolkit + RTK Query
 - React Router v6
 - Tailwind CSS
-- i18next for internationalization
+- i18next (internationalization)
 
 ## Setup
+
 ```bash
 npm install
 npm run dev

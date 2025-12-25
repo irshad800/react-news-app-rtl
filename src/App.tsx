@@ -31,6 +31,7 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       <Outlet />
+      
 
       <div className="fixed top-4 right-4 flex gap-4 z-50">
 
