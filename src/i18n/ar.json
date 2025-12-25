@@ -5,8 +5,25 @@
   "news": {
     "title": "الأخبار",
     "author": "المؤلف",
-    "readMore": "اقرأ أكثر",
-    "loading": "جار التحميل..."
+    "readMore": "اقرأ المزيد",
+    "loading": "جار التحميل...",
+    "liveUpdates": "تحديثات مباشرة",
+    "coverage": "تغطية على مدار 24 ساعة",
+    "globalNews": "أخبار عالمية",
+    "stayInformed": "ابق على اطلاع بأحدث الأخبار العاجلة والتحليلات العميقة والتغطية الشاملة من جميع أنحاء العالم",
+    "hoursAgo": "ساعات مضت",
+    "articleNotFound": "المقالة غير موجودة",
+    "articleNotFoundDesc": "المقالة التي تبحث عنها غير موجودة أو تم إزالتها.",
+    "backToNews": "العودة إلى الأخبار",
+    "published": "نشرت",
+    "minRead": "دقيقة قراءة",
+    "category": "تكنولوجيا",
+    "like": "أعجبني",
+    "share": "مشاركة",
+    "tags": "الوسوم:",
+    "relatedArticles": "مقالات ذات صلة",
+    "relatedArticleTitle": "عنوان المقالة ذات الصلة",
+    "relatedArticleDesc": "وصف مختصر لمحتوى المقالة ذات الصلة..."
   },
   "language": {
     "english": "الإنجليزية",

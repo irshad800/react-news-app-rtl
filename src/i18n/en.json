@@ -5,8 +5,25 @@
   "news": {
     "title": "News",
     "author": "Author",
-    "readMore": "Read more",
-    "loading": "Loading..."
+    "readMore": "Read More",
+    "loading": "Loading...",
+    "liveUpdates": "Live Updates",
+    "coverage": "24/7 Coverage",
+    "globalNews": "Global News",
+    "stayInformed": "Stay informed with the latest breaking news, in-depth analysis, and comprehensive coverage from around the globe",
+    "hoursAgo": "hours ago",
+    "articleNotFound": "Article Not Found",
+    "articleNotFoundDesc": "The article you're looking for doesn't exist or has been removed.",
+    "backToNews": "Back to News",
+    "published": "Published",
+    "minRead": "min read",
+    "category": "Technology",
+    "like": "Like",
+    "share": "Share",
+    "tags": "Tags:",
+    "relatedArticles": "Related Articles",
+    "relatedArticleTitle": "Related Article Title",
+    "relatedArticleDesc": "Brief description of the related article content..."
   },
   "language": {
     "english": "English",

@@ -23,6 +23,15 @@
       
     }, [theme, language]);
 
+    useEffect(() => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    }, []);
+
    
    
    
@@ -45,7 +54,7 @@
 
         <Outlet />
 
-      <div className="fixed top-4 right-4 flex flex-col sm:flex-row gap-4 z-50">
+      <div className="fixed top-4 right-4 flex flex-col gap-2 z-50 sm:flex-row sm:gap-4">
 
   <LanguageToggle />
   <ThemeToggle />
