@@ -1,0 +1,15 @@
+{
+  "app": {
+    "title": "News App"
+  },
+  "news": {
+    "title": "News",
+    "author": "Author",
+    "readMore": "Read more",
+    "loading": "Loading..."
+  },
+  "language": {
+    "english": "English",
+    "arabic": "العربية"
+  }
+}
