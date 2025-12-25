@@ -5,8 +5,7 @@ import { useTranslation } from 'react-i18next';
 export const LanguageToggle = () => {
   const dispatch = useAppDispatch();
 const language = useAppSelector((state) => state.language.currentLanguage);
-  const { t } = useTranslation();
-
+const { t: _t } = useTranslation();
   const toggleLanguage = () => {
     const newLanguage = language === 'en' ? 'ar' : 'en';
     dispatch(setLanguage(newLanguage));
@@ -21,7 +20,7 @@ const language = useAppSelector((state) => state.language.currentLanguage);
                  shadow-lg text-sm font-medium flex items-center justify-center  
                  text-gray-900 dark:text-gray-100" 
 
-                 
+
       aria-label={`Switch to ${language === 'en' ? 'Arabic' : 'English'}`}
     >
       {language === 'en' ? 'ع' : 'EN'}

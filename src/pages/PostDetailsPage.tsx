@@ -14,7 +14,6 @@ export const PostDetailsPage = () => {
 
  const { id } = useParams<{ id: string }>();
 
-  const postId = Number(id); 
 
   const { t } = useTranslation();
 

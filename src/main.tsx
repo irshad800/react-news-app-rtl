@@ -6,7 +6,6 @@ import { store } from './app/store';
 
 import { router } from './routes';
 
-import App from './App';
 import './index.css';
 
 import './i18n'; 
