@@ -1,7 +1,11 @@
+import { useEffect } from 'react';
+
 import { useGetNewsQuery } from '../features/news/newsApi';
 import { useGetAuthorsQuery } from '../features/authors/authorsApi';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+
+import { useLocation } from 'react-router-dom';
 
 
 
@@ -16,10 +20,18 @@ export const NewsListPage = () => {
   const { data: posts = [], isLoading } = useGetNewsQuery();
   const { data: authors = [] } = useGetAuthorsQuery();
 
+  const location = useLocation();
 
+
+useEffect(() => {
+    if (location.state?.scrollPosition) {
+      window.scrollTo(0, location.state.scrollPosition);
+    }
+  }, [location.state]);
   
 
   if (isLoading) {
+
     return (
       <div className="max-w-6xl mx-auto p-8">
 
@@ -27,7 +39,10 @@ export const NewsListPage = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-          {[...Array(6)].map((_, i) => (
+          {
+          [...Array(6)].map((_, i) => (
+
+
             <div key={i} className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden animate-pulse border border-gray-100 dark:border-gray-700">
 
               <div className="bg-gray-300 dark:bg-gray-700 h-48 w-full"></div>
@@ -38,17 +53,26 @@ export const NewsListPage = () => {
                 <div className="h-6 bg-gray-300 dark:bg-gray-700 rounded w-3/4 mb-4"></div>
 
                 <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded mb-2"></div>
+
                 <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded mb-2"></div>
+
                 <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-2/3 mb-4"></div>
 
+
                 <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
+
+
                   <div className="flex items-center space-x-2">
+
                     <div className="w-8 h-8 bg-gray-300 dark:bg-gray-700 rounded-full"></div>
                     <div>
+
                       <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-20 mb-1"></div>
+
                       <div className="h-3 bg-gray-300 dark:bg-gray-700 rounded w-16"></div>
-                    </div>
-                  </div>
+
+                    </div>    </div>
+                
                   <div className="h-8 bg-gray-300 dark:bg-gray-700 rounded-lg w-24"></div>
                 </div>
               </div>
