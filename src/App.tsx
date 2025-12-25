@@ -23,6 +23,22 @@
       
     }, [theme, language]);
 
+   
+   
+   
+    // Initialize 
+
+
+
+
+
+    useEffect(() => {
+      const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
+      if (savedTheme) {
+        document.documentElement.classList.toggle('dark', savedTheme === 'dark');
+      }
+    }, []);
+
     return (
 
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
