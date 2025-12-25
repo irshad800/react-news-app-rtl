@@ -8,13 +8,19 @@ export interface Post {
 }
 
 export const newsApi = createApi({
+
   reducerPath: 'newsApi',
+
+  //news API
+  
   baseQuery: fetchBaseQuery({ baseUrl: 'https://jsonplaceholder.typicode.com/' }),
   endpoints: (builder) => ({
+
     getNews: builder.query<Post[], void>({
+
       query: () => 'posts',
-    }),
-  }),
+             }),
+   }),
 });
 
 export const { useGetNewsQuery } = newsApi;

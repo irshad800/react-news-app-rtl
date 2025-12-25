@@ -9,8 +9,11 @@ export interface Author {
 
 export const authorsApi = createApi({
   reducerPath: 'authorsApi',
+  
+//   API
   baseQuery: fetchBaseQuery({ baseUrl: 'https://jsonplaceholder.typicode.com/' }),
   endpoints: (builder) => ({
+
     getAuthors: builder.query<Author[], void>({
       query: () => 'users',
     }),
