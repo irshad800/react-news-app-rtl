@@ -1,46 +1,24 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-
-
-
 import LanguageDetector from 'i18next-browser-languagedetector';
 
-import enTranslation from './en.json';
+import en from './en.json';
+import ar from './ar.json';
 
-import arTranslation from './ar.json';
+const resources = {
+  en: { translation: en },
+  ar: { translation: ar },
+};
 
 i18n
   .use(LanguageDetector)
- .use(initReactI18next)
-
- 
+  .use(initReactI18next)
   .init({
-    resources: {
-      en: { translation: enTranslation },
-      ar: { translation: arTranslation },
-    },
-
-
-    lng: localStorage.getItem('language') || 'en', 
+    resources,
     fallbackLng: 'en',
     interpolation: {
-      escapeValue: false, 
+      escapeValue: false,
     },
-
-
-    detection: {
-      order: ['localStorage'],
-      caches: ['localStorage'],
-    },
-
   });
-
-
-i18n.on('languageChanged', (lng) => {
-  localStorage.setItem('language', lng);
-});
-
-
-
 
 export default i18n;

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 export const LanguageToggle = () => {
   const dispatch = useAppDispatch();
-  const { language } = useAppSelector((state) => state.language);
+const language = useAppSelector((state) => state.language.currentLanguage);
   const { t } = useTranslation();
 
   const toggleLanguage = () => {
